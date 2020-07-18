@@ -1,0 +1,48 @@
+<html>
+	<head>
+	<link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css"/>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<div class="jumbotron">
+						<h3>Enter any Number</h3>
+						<input id="input"type="number" class="form-control" >
+						<br/>
+						<h4 class="text-center" id="res"></h4>
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+		
+		<script>
+			let input = document.getElementById('input');
+			
+			input.addEventListener('input', func)
+			
+			function func(){
+				let val = input.value;
+				let res = document.getElementById('res')
+				fetch('http://numbersapi.com/'+val)
+				.then((response) =>
+					response.text())
+				.then((data) =>{
+					console.log(data)
+					if(input.value = ''){
+					res.innerHTML = 'Enter any Number';
+					}else{
+						res.innerHTML = data;
+					}
+				})
+				
+			}
+
+		</script>
+	</body>
+</html>
